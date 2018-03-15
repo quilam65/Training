@@ -1,9 +1,9 @@
-class Products < ActiveRecord::Migration[5.1]
+class CreateProducts < ActiveRecord::Migration[5.1]
   def change
     create_table :products do |t|
       t.string :title
       t.text :description
-      t.timestamp
+      t.timestamps
     end
   end
 end
