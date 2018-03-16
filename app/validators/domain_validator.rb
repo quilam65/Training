@@ -1,6 +1,7 @@
 class DomainValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    unless value =~ /\^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,6}$\z/im
+    unless value =~ /^(?!:\/\/)([a-zA-Z0-9-]+\.){0,5}[a-zA-Z0-9-][a-zA-Z0-9-]+\.[a-zA-Z]{2,64}?$/i
+
       record.errors[attribute] << (options[:message] || "wrong domain address")
     end
   end
