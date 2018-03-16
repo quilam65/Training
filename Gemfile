@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'enumerize'
 
 gem 'countries'
+ gem 'formtastic', '~> 3.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -43,6 +44,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development do
