@@ -15,6 +15,11 @@ class Product < ApplicationRecord
   extend Enumerize
   enumerize :level, in: [:easy, :medium, :hard]
 
+  countrys = ISO3166::Country.all_translated 
+  extend Enumerize
+  enumerize :country, in: countrys
+
+
   def title_is_shorter_than_description
     return if title.blank? or description.blank?
     if description.length < title.length
