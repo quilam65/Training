@@ -1,4 +1,5 @@
-<table>
+<h1>LIST PRODUCTS</h1>
+<table class="table table-striped">
   <tr>
     <th>
       Title
@@ -21,6 +22,9 @@
       </th>
       <th>
         <%= p.category.try(:title) %>
+      </th>
+      <th>
+        <%= link_to('Read more',product_path(p)) %>
       </th>
     </tr>
 
