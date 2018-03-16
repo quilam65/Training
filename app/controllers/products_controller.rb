@@ -7,13 +7,19 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     render :new
   end
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    flash[:notice] = 'Delete successfully'
+    redirect_to products_path
+  end
 
   def update
     @product = Product.find(params[:id])
     product_params=params.require(:product).permit(:title, :description, :price,:published, :country, :level, :category_id)
 
     if @product.update!(product_params)
-      flash[:notice] = 'You have successfully created the product'
+      flash[:notice] = 'You have successfully updated the product'
       redirect_to products_path
     else
       flash[:alert] = 'There is an error in your form'
