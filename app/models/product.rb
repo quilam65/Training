@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   before_save :strip_html_from_description
+  before_save :set_all_title_lower_case
 
   validates :title , :description, :price, presence: true
   validates :price, numericality: { greater_than: 0 }
@@ -13,6 +14,10 @@ class Product < ApplicationRecord
     if description.length < title.length
       errors.add(:description, 'can\'t be shorter than title' )
     end
+  end
+
+  def set_all_title_lower_case
+    self.title = self.title.downcase
   end
 
   def strip_html_from_description
