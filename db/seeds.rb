@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Product.destroy_all
-Product.create!(title: "Rubu Book", description: 'Learn Ruby programing', price: 12.99, published: true )
-Product.create!(title: "Rubu Book 2", description: 'Learn Ruby programing 2', price: 12.99, published: true)
-Product.create!(title: "Rubu Book 3", description: 'Learn Ruby programing 3', price: 12.99, published: true)
+Category.destroy_all
+p = Product.create!(title: "Ruby Book", description: 'Learn Ruby programing', price: 12.99, published: true )
+p = Product.create!(title: "Ruby Book 2", description: 'Learn Ruby programing 2', price: 12.99, published: true)
+p = Product.create!(title: "Ruby Book 3", description: 'Learn Ruby programing 3', price: 12.99, published: true)

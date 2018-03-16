@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
 
-  belongs_to :category
-  
+  belongs_to :category, optional: true
+
   before_save :strip_html_from_description
   before_save :set_all_title_lower_case
 
@@ -11,6 +11,9 @@ class Product < ApplicationRecord
 
   scope :published, ->{where(published: true)}
   scope :priced_more_then, ->(price) {where('price >?', price)}
+
+  extend Enumerize
+  enumerize :level, in: [:easy, :medium, :hard]
 
   def title_is_shorter_than_description
     return if title.blank? or description.blank?
