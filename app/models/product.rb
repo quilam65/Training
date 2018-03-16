@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  before_save :strip_html_from_description
+
   validates :title , :description, :price, presence: true
   validates :price, numericality: { greater_than: 0 }
   validate :title_is_shorter_than_description
@@ -11,5 +13,10 @@ class Product < ApplicationRecord
     if description.length < title.length
       errors.add(:description, 'can\'t be shorter than title' )
     end
+  end
+
+  def strip_html_from_description
+    self.description =
+      ActionView::Base.full_sanitizer.sanitize(self.description)
   end
 end
