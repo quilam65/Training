@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+
+  belongs_to :category
+  
   before_save :strip_html_from_description
   before_save :set_all_title_lower_case
 
