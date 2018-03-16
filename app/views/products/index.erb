@@ -1,5 +1,28 @@
+<table>
+  <tr>
+    <th>
+      Title
+    </th>
+    <th>
+      Price
+    </th>
+    <th>
+      Category
+    </th>
+  </tr>
 <% @products.each do |p| %>
-  <h2>
-    <%= p.title %>
-  </h2>
+
+    <tr>
+      <th>
+        <%= p.title %>
+      </th>
+      <th>
+        <%= p.price %>
+      </th>
+      <th>
+        <%= p.category.try(:title) %>
+      </th>
+    </tr>
+
 <% end %>
+</table>
