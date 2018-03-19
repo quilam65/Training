@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   def index
+    # binding.pry
     @products = Product.includes(:category).all.published
     # render json: @products
   end
