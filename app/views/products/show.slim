@@ -1,0 +1,12 @@
+p
+  = @product.title
+p
+  = @product.price
+p
+  = @product.description
+p
+  = @product.category.try(:title)
+p
+  = @product.level
+p
+  = @product.country

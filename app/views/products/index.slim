@@ -1,0 +1,12 @@
+h1
+  LIST PRODUCTS
+= link_to('New products',new_product_path)
+table.table.table-striped
+  tr
+    th
+      Title
+    th
+      Price
+    th
+      Category
+  = render partial: 'product', collection: @products
