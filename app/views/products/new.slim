@@ -1,9 +1,9 @@
 = semantic_form_for @product do |f|
-    = f.input :title, :input_html => { :class => 'form-control'}
-    = f.input :description, :input_html => { :class => 'form-control'}
-    = f.input :price, min: 1, :input_html => { :class => 'form-control'}
-    = f.input :published , as: :radio
-    = f.input :country, as: :select
-    = f.input :level, :as => :radio
-    = f.input :category
-    = f.actions :submit, :cancel
+  = f.input :title, :input_html => { :class => 'form-control'}
+  = f.input :description, :input_html => { :class => 'form-control'}
+  = f.input :price, min: 1, :input_html => { :class => 'form-control'}
+  = f.input :published , as: :radio
+  = f.input :country, as: :select
+  = f.input :level, :as => :radio
+  = f.input :category
+  = f.actions :submit, :cancel
