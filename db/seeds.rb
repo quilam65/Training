@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Product.destroy_all
 Category.destroy_all
-Category.create!(title: "Ruby")
-Product.create!(title: "Ruby Book", description: 'Learn Ruby programing', price: 12.99, published: true )
-Product.create!(title: "Ruby Book 2", description: 'Learn Ruby programing 2', price: 12.99, published: true)
-Product.create!(title: "Ruby Book 3", description: 'Learn Ruby programing 3', price: 12.99, published: true)
+5.times do |i|
+  Category.create!(title: "Category #{i+1}")
+  Product.create!(title: "Product #{i+1}", description: 'Learn Ruby programing', price: 12.99, published: true )
+end

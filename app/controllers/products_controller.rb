@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.includes(:category).all.published
+    # render json: @products
   end
 
   def edit
