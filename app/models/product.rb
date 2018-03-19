@@ -10,12 +10,12 @@ class Product < ApplicationRecord
   validate :title_is_shorter_than_description
 
   scope :published, ->{where(published: true)}
-  scope :priced_more_then, ->(price) {where('price >?', price)}
+  scope :price_more_then, ->(price) {where('price >?', price)}
 
   extend Enumerize
   enumerize :level, in: [:easy, :medium, :hard]
 
-  countrys = ISO3166::Country.all_translated 
+  countrys = ISO3166::Country.all_translated
   extend Enumerize
   enumerize :country, in: countrys
 
