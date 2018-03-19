@@ -1,0 +1,17 @@
+
+    <tr>
+      <th>
+        <%= product.title %>
+      </th>
+      <th>
+        <%= product.price %>
+      </th>
+      <th>
+        <%= product.category.try(:title) %>
+      </th>
+      <th>
+        <%= link_to('Read more',product_path(product)) %>
+        <%= link_to('Edit ',edit_product_path(product)) %>
+        <%= link_to('Delete ',product_path(product), method: :delete, data: { confirm: 'Are you sure?'}) %>
+      </th>
+    </tr>

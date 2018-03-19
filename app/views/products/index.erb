@@ -12,23 +12,5 @@
       Category
     </th>
   </tr>
-<% @products.each do |p| %>
-    <tr>
-      <th>
-        <%= p.title %>
-      </th>
-      <th>
-        <%= p.price %>
-      </th>
-      <th>
-        <%= p.category.try(:title) %>
-      </th>
-      <th>
-        <%= link_to('Read more',product_path(p)) %>
-        <%= link_to('Edit ',edit_product_path(p)) %>
-        <%= link_to('Delete ',product_path(p), method: :delete, data: { confirm: 'Are you sure?'}) %>
-      </th>
-    </tr>
-
-<% end %>
+  <%= render partial: 'product', collection: @products%>
 </table>

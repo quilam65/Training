@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
 
   def update
     return redirect_to products_path, notice: 'You have successfully updated the product' if @product.update!(@product_params)
-    flash[:alert] = 'There is an error in your form'
+    flash[:alert] = 'Updated errors'
     render :new
   end
 
