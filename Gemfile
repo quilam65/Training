@@ -46,7 +46,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'better_errors'
   gem 'binding_of_caller'
-
+  gem 'bullet'
   gem 'pry-byebug', '~> 3.6'
 end
 

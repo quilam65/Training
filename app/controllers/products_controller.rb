@@ -1,50 +1,50 @@
 class ProductsController < ApplicationController
+  before_action :get_product, only: [:edit, :show, :update, :destroy]
+  before_action :product_params, only: [:update, :create]
+
   def index
-    # binding.pry
-    @products = Product.includes(:category).all.published
-    # render json: @products
+    @products = Product.includes(:category).all.published.references(:category)
+  end
+
+  def show
   end
 
   def edit
-    @product = Product.find(params[:id])
     render :new
-  end
-  def destroy
-    @product = Product.find(params[:id])
-    @product.destroy
-    flash[:notice] = 'Delete successfully'
-    redirect_to products_path
   end
 
   def update
-    @product = Product.find(params[:id])
-    product_params=params.require(:product).permit(:title, :description, :price,:published, :country, :level, :category_id)
-
-    if @product.update!(product_params)
-      flash[:notice] = 'You have successfully updated the product'
-      redirect_to products_path
-    else
-      flash[:alert] = 'There is an error in your form'
-      render :new
-    end
+    return redirect_to products_path, notice: 'You have successfully updated the product' if @product.update!(@product_params)
+    flash[:alert] = 'There is an error in your form'
+    render :new
   end
 
   def new
     @product = Product.new
   end
+
   def create
-    product_params=params.require(:product).permit(:title, :description, :price,:published, :country, :level, :category_id)
-    @product = Product.new(product_params)
-    if @product.save
-      flash[:notice] = 'You have successfully created the product'
-      redirect_to products_path
-    else
-      flash[:alert] = 'There is an error in your form'
-      render :new
+    @product = Product.new(@product_params)
+    return redirect_to products_path, notice: 'You have successfully created the product' if @product.save
+    flash[:alert] = 'There is an error in your form'
+    render :new
+  end
+
+  def destroy
+
+    return redirect_to products_path, notice: 'Delete successfully' if @product.destroy
+    redirect_to products_path, alert: 'Delete error'
+  end
+
+  private
+    def product_params
+      @product_params=params.require(:product).permit(:title, :description,
+                                                      :price,:published,
+                                                      :country, :level, :category_id)
     end
-  end
-  def show
-    @product = Product.find(params[:id])
-  end
+
+    def get_product
+      @product = Product.find(params[:id])
+    end
 
 end

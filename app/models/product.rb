@@ -1,16 +1,15 @@
 class Product < ApplicationRecord
+  before_save :strip_html_from_description
+  before_save :set_all_title_lower_case
 
   belongs_to :category, optional: true
 
-  before_save :strip_html_from_description
-  before_save :set_all_title_lower_case
+  scope :published, ->{where(published: true)}
+  scope :price_more_then, ->(price) {where('price >?', price)}
 
   validates :title , :description, :price, presence: true
   validates :price, numericality: { greater_than: 0 }
   validate :title_is_shorter_than_description
-
-  scope :published, ->{where(published: true)}
-  scope :price_more_then, ->(price) {where('price >?', price)}
 
   extend Enumerize
   enumerize :level, in: [:easy, :medium, :hard]
