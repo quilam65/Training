@@ -1,10 +1,7 @@
 tr
-  th
-    = product.title
-  th
-    = product.price
-  th
-    = product.category.try(:title)
+  th = product.title
+  th = product.price
+  th = product.category.try(:title)
   th
     = link_to('Read more',product_path(product))
     = link_to('Edit ',edit_product_path(product))
